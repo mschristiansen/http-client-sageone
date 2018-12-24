@@ -1,0 +1,59 @@
+cabal-version:  1.12
+name:           http-client-sageone
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/mschristiansen/http-client-sageone#readme>
+homepage:       https://github.com/mschristiansen/http-client-sageone#readme
+bug-reports:    https://github.com/mschristiansen/http-client-sageone/issues
+author:         Mikkel Christiansen
+maintainer:     mikkel@rheosystems.com
+copyright:      Rheo Systems (Pty) Ltd
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/mschristiansen/http-client-sageone
+
+library
+  exposed-modules:
+                  Network.SageOne
+                  Network.SageOne.Config
+  other-modules:
+      Paths_http_client_sageone
+  hs-source-dirs:
+      src
+  build-depends:       aeson
+                     , base >=4.7 && <5
+                     , bytestring
+                     , http-client
+                     , http-client-tls
+  default-language: Haskell2010
+
+executable http-client-sageone-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_http_client_sageone
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , http-client-sageone
+  default-language: Haskell2010
+
+test-suite http-client-sageone-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_http_client_sageone
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , http-client-sageone
+  default-language: Haskell2010
